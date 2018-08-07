@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My second Vue app</title>
+	<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="input-1">
+		<input v-model="message" placeholder="edit me" />
+		<p>Message is: {{ message }}</p>
+	</div>
+
+	<div id="textarea-1">
+		<textarea v-model="message" placeholder="multipile"></textarea>
+		<p style="white-space: pre-line;">{{message}}</p>
+	</div>
+
+	<div id="superTyp">
+		<input type="checkbox" id="checkbox-1" v-model="checked" />
+		<label for="checkbox-1">{{ checked }}</label>
+	</div>
+
+	<div id="checkBox-3">
+		<input type="checkbox" id="lini" value="Lini" v-model="checkedNames" />
+		<label for="jack">Lini</label>
+		<input type="checkbox" id="nati" value="Nati" v-model="checkedNames" />
+		<label for="jack">Nati</label>
+		<input type="checkbox" id="leyla" value="Leyla" v-model="checkedNames" />
+		<label for="jack">Leyla</label>
+		<input type="checkbox" id="neva" value="Neva" v-model="checkedNames" />
+		<label for="jack">Neva</label>
+		<p>Namens: {{checkedNames}}</p>
+	</div>
+
+	<div id="radio-1">
+		<input type="radio" id="eins" value="eins" v-model="picked" />
+		<label for="eins">Eins</label>
+		<input type="radio" id="zwei" value="zwei" v-model="picked" />
+		<label for="zwei">Zwo</label>
+		<br>
+		<p>Picked: {{picked}}</p>
+	</div>
+
+	<div id="select-1">
+		<select v-model="selected">
+			<option disabled>Select</option>
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br>
+		<p>Selected: {{selected}}</p>
+	</div>
+
+	<div id="select-2">
+		<select v-model="selected" multiple>
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br>
+		<p>Selected: {{selected}}</p>
+	</div>
+
+	<div id="select-3">
+		<select v-model="selected">
+			<option v-for="option in options" v-bind:value="option.value">
+				{{ option.text }}
+			</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+
+	<script>
+		var select3 = new Vue({
+			el: '#select-3',
+			data: {
+				selected: 'A',
+				options: [{
+						text: 'One',
+						value: 'A'
+					},
+					{
+						text: 'Two',
+						value: 'B'
+					},
+					{
+						text: 'Three',
+						value: 'C'
+					}
+				]
+			}
+		})
+
+		var select2 = new Vue({
+			el: '#select-2',
+			data: {
+				selected: []
+			}
+		});
+
+		var select1 = new Vue({
+			el: '#select-1',
+			data: {
+				selected: ''
+			}
+		});
+
+		var radio1 = new Vue({
+			el: '#radio-1',
+			data: {
+				picked: ''
+			}
+		});
+
+		var checkbox3 = new Vue({
+			el: '#checkBox-3',
+			data: {
+				checkedNames: []
+			}
+		});
+
+		var checkbox1 = new Vue({
+			el: '#superTyp',
+			data: {
+				checked: true
+			}
+		});
+
+		var textarea1 = new Vue({
+			el: '#textarea-1',
+			data: {
+				message: 'hopplos'
+			}
+		});
+
+		var input1 = new Vue({
+			el: '#input-1',
+			data: {
+				message: ''
+			}
+		});
+	</script>
+
+	<!-- Since there is already a rich ecosystem of ajax libraries    -->
+	<!-- and collections of general-purpose utility methods, Vue core -->
+	<!-- is able to remain small by not reinventing them. This also   -->
+	<!-- gives you the freedom to use what youre familiar with. -->
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+
+</body>
+
+</html>
